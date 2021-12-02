@@ -6,22 +6,20 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
+   mavenCentral()
 }
 
 dependencies {
-    testApi("org.junit.jupiter:junit-jupiter-engine:5.8.1")
-    testImplementation("org.assertj:assertj-core:3.21.0")
+    testApi("org.junit.jupiter:junit-jupiter-engine:5.7.0")
+    testImplementation("org.assertj:assertj-core:3.18.1")
 }
 
 tasks {
-    withType<KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "17"
-            freeCompilerArgs = listOf("-Xjsr305=strict")
-        }
-    }
+
     test {
         useJUnitPlatform()
+    }
+    wrapper {
+        gradleVersion = "7.3"
     }
 }
