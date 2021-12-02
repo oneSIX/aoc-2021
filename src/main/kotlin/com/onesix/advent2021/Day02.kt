@@ -39,4 +39,30 @@ class Day02(private val input: List<String>) {
 
         return down * forward
     }
+
+    fun solvePart2(data: List<String> = input): Int {
+        var down = 0
+        var horizontalPosition = 0
+        var aim = 0
+
+        data.forEach {
+            val inp = it.split(" ")
+            val (command, intensity) = inp
+            when(command) {
+                "forward" -> {
+                    horizontalPosition += intensity.toInt()
+                    down += (aim * intensity.toInt())
+                }
+                "down" -> {
+                    aim += intensity.toInt()
+                }
+                "up" -> {
+                    aim -= intensity.toInt()
+                }
+            }
+        }
+
+        return down * horizontalPosition
+
+    }
 }
